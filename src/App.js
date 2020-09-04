@@ -1,24 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Button from "./components/button";
 
 function App() {
+
+  const [ text, setText ] = useState("Click me!");
+
+  function goodClick() {
+    setText("Good man!");
+  }
+
+  function noGoodClick() {
+    console.log("You are a bad person!");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Hello React</p>
+        <Button text={text} handleClick={goodClick}/>
+        <Button text="Don't click me!" handleClick={noGoodClick}/>
     </div>
   );
 }
